@@ -1,0 +1,138 @@
+.form__container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 396px;
+  margin: 22px auto 0;
+}
+
+.form__title {
+  width: 100%;
+  margin: 0 0 40px 0;
+  text-align: left;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 29px;
+}
+
+.form__fieldset {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.form__label {
+  align-self: flex-start;
+  margin: 20px 0 10px 0;
+  color: rgba(139, 139, 139, 1);
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 10px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 12px;
+}
+
+.form__input {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 396px;
+  padding: 15px;
+  color: rgba(255, 255, 255, 1);
+  border: none;
+  border-radius: 8px;
+  background-color: rgba(47, 47, 47, 1);
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 16px;
+}
+
+.form__input_type_password {
+  color: rgba(238, 52, 101, 1);
+}
+
+.form__error {
+  align-self: flex-start;
+
+  margin: 10px 0 0 0;
+  color: rgba(238, 52, 101, 1);
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 10px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 12px;
+}
+
+.form__button {
+  width: 100%;
+  margin: 69px 0 0 0;
+  padding: 14px 0;
+  color: rgba(255, 255, 255, 1);
+  border: none;
+  border-radius: 3px;
+  background-color: rgba(66, 133, 244, 1);
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 17px;
+}
+
+.form__button_type_login {
+  margin: 158px 0 0 0;
+}
+
+.form__text {
+  margin: 16px 0 70px 0;
+  color: rgba(139, 139, 139, 1);
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 17px;
+}
+
+.form__link-redirect {
+  padding: 0 0 0 6px;
+  text-decoration: none;
+  color: rgba(66, 133, 244, 1);
+  background-color: rgba(32, 32, 32, 1);
+}
+
+@media all and (max-width: 450px) {
+  .form__container {
+    max-width: 260px;
+
+    margin: 50px auto 0;
+  }
+
+  .form__title {
+    margin: 0 0 80px 0;
+    text-align: center;
+  }
+
+  .form__text {
+    color: rgba(139, 139, 139, 1);
+
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .form__button {
+    margin: 157px 0 0 0;
+
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .form__button_type_login {
+    margin: 246px 0 0 0;
+  }
+}
