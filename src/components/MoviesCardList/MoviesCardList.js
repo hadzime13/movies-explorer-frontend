@@ -11,9 +11,20 @@ const MoviesCardList = ({ isSaved, mod }) => {
       <section className={`movies-cardlist__container${mod ? ` ${mod}` : ''}`}>
         {isSaved ?
           <ul className="movies-cardlist__list">
-            <MoviesCard movieImage={moviesImages[0]} movieName={moviesList[0]} movieLength='1ч17м' />
-            <MoviesCard movieImage={moviesImages[1]} movieName={moviesList[1]} movieLength='1ч17м' />
-            <MoviesCard movieImage={moviesImages[2]} movieName={moviesList[2]} movieLength='1ч17м' />
+            <MoviesCard
+              movieImage={moviesImages[0]}
+              movieName={moviesList[0]}
+              movieLength='1ч17м'
+              isAtSavedMovies={true} />
+            <MoviesCard movieImage={moviesImages[1]}
+              movieName={moviesList[1]}
+              movieLength='1ч17м'
+              isAtSavedMovies={true} />
+            <MoviesCard
+              movieImage={moviesImages[2]}
+              movieName={moviesList[2]}
+              movieLength='1ч17м'
+              isAtSavedMovies={true} />
           </ul>
           : <>
             <ul className="movies-cardlist__list">

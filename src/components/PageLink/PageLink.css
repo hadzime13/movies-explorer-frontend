@@ -29,6 +29,10 @@
   background-color: rgba(61, 220, 132, 1);
 }
 
+.pagelink_type_login .pagelink__text {
+  color:rgba(0, 0, 0, 1);
+}
+
 .pagelink_type_account {
   margin: 0 0 0 auto;
 }

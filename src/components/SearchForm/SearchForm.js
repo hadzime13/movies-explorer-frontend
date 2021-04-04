@@ -18,6 +18,7 @@ const SearchForm = () => {
           name="film"
           type="text"
           placeholder="Фильм"
+          required
         />
         <Button
           buttonText="Поиск"

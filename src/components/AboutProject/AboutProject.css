@@ -29,6 +29,7 @@
 
 .about-project__subtitle {
   margin: 0 0 26px 0;
+  max-width: 90%;
   letter-spacing: -0.04em;
   font-family: 'Inter', 'Arial', sans-serif;
   font-size: 20px;

@@ -13,6 +13,10 @@
   margin: 0 0 26px 0;
 }
 
+.search-form__fieldset:focus-within {
+  outline: 1px solid rgba(61, 220, 132, 0.6);
+}
+
 .search-form__input {
   padding: 25px 0 25px 25px;
   margin: 0;
