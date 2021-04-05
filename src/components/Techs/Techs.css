@@ -1,0 +1,119 @@
+.techs__container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
+  padding: 0 5.47% 0;
+  background-color: rgba(39, 39, 39, 1);
+}
+
+.techs__title {
+  width: 100%;
+  margin: 110px 0 90px 0;
+  padding: 0 0 23px 0;
+  letter-spacing: -0.04em;
+  border-bottom: 1px solid rgba(218, 218, 218, 1);
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 22px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 27px;
+}
+
+.techs__subtitle {
+  margin: 0 0 26px 0;
+  letter-spacing: -0.04em;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 50px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 58px;
+}
+
+.techs__text {
+  margin: 0 0 100px 0;
+  text-align: center;
+  letter-spacing: -0.04em;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 20px;
+}
+
+.techs__list {
+  display: flex;
+
+  margin: 0 0 100px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.techs__list-item {
+  min-width: 90px;
+  margin: 0 10px 0 0;
+  padding: 21px 0 22px;
+  text-align: center;
+  letter-spacing: -0.04em;
+  border-radius: 10px;
+  background-color: rgba(48, 48, 48, 1);
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 17px;
+}
+
+.techs__list-item:last-of-type {
+  margin: 0;
+}
+
+@media all and (max-width: 1040px) {
+  .techs__list-item {
+    min-width: 84px;
+  }
+}
+
+@media all and (max-width: 670px) {
+  .techs__container {
+    padding: 0 4.4% 0;
+  }
+
+  .techs__title {
+    margin: 70px 0 60px 0;
+    padding: 0 0 28px 0;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .techs__subtitle {
+    margin: 0 0 24px 0;
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .techs__text {
+    margin: 0 0 50px 0;
+    letter-spacing: -0.04em;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .techs__list {
+    flex-wrap: wrap;
+    justify-content: center;
+
+    margin: 0 0 60px 0;
+  }
+
+  .techs__list-item {
+    margin: 0 10px 10px 0;
+    letter-spacing: -0.04em;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .techs__list-item:last-of-type {
+    margin: 0 10px 10px 0;
+  }
+}

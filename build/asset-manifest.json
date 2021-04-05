@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/static/css/main.23fd0df3.chunk.css",
+    "main.js": "/static/js/main.2ab72005.chunk.js",
+    "main.js.map": "/static/js/main.2ab72005.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.8e926f31.js",
+    "runtime-main.js.map": "/static/js/runtime-main.8e926f31.js.map",
+    "static/js/2.ceb806c1.chunk.js": "/static/js/2.ceb806c1.chunk.js",
+    "static/js/2.ceb806c1.chunk.js.map": "/static/js/2.ceb806c1.chunk.js.map",
+    "static/js/3.029427ec.chunk.js": "/static/js/3.029427ec.chunk.js",
+    "static/js/3.029427ec.chunk.js.map": "/static/js/3.029427ec.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.23fd0df3.chunk.css.map": "/static/css/main.23fd0df3.chunk.css.map",
+    "static/js/2.ceb806c1.chunk.js.LICENSE.txt": "/static/js/2.ceb806c1.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/Inter-Regular.e148c4a1.woff",
+    "static/media/delete.3888e018.svg": "/static/media/delete.3888e018.svg",
+    "static/media/landing-logo.872d9c2d.svg": "/static/media/landing-logo.872d9c2d.svg",
+    "static/media/logo.25a2943c.svg": "/static/media/logo.25a2943c.svg",
+    "static/media/pic__COLOR_pic1.fc2d6dfe.jpg": "/static/media/pic__COLOR_pic1.fc2d6dfe.jpg",
+    "static/media/pic__COLOR_pic10.8328012c.jpg": "/static/media/pic__COLOR_pic10.8328012c.jpg",
+    "static/media/pic__COLOR_pic11.73813a62.jpg": "/static/media/pic__COLOR_pic11.73813a62.jpg",
+    "static/media/pic__COLOR_pic12.b2c52c65.jpg": "/static/media/pic__COLOR_pic12.b2c52c65.jpg",
+    "static/media/pic__COLOR_pic2.7805d3d4.jpg": "/static/media/pic__COLOR_pic2.7805d3d4.jpg",
+    "static/media/pic__COLOR_pic3.3fac31ac.jpg": "/static/media/pic__COLOR_pic3.3fac31ac.jpg",
+    "static/media/pic__COLOR_pic4.6a191b63.jpg": "/static/media/pic__COLOR_pic4.6a191b63.jpg",
+    "static/media/pic__COLOR_pic5.a9e7e31e.jpg": "/static/media/pic__COLOR_pic5.a9e7e31e.jpg",
+    "static/media/pic__COLOR_pic6.08a4469d.jpg": "/static/media/pic__COLOR_pic6.08a4469d.jpg",
+    "static/media/pic__COLOR_pic7.54f04d65.jpg": "/static/media/pic__COLOR_pic7.54f04d65.jpg",
+    "static/media/pic__COLOR_pic8.09a94a95.jpg": "/static/media/pic__COLOR_pic8.09a94a95.jpg",
+    "static/media/pic__COLOR_pic9.11ff0ea0.jpg": "/static/media/pic__COLOR_pic9.11ff0ea0.jpg",
+    "static/media/save3.7b9aeb40.svg": "/static/media/save3.7b9aeb40.svg",
+    "static/media/test.13c06232.svg": "/static/media/test.13c06232.svg",
+    "static/media/vitalyan.020571aa.jpg": "/static/media/vitalyan.020571aa.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8e926f31.js",
+    "static/js/2.ceb806c1.chunk.js",
+    "static/css/main.23fd0df3.chunk.css",
+    "static/js/main.2ab72005.chunk.js"
+  ]
+}

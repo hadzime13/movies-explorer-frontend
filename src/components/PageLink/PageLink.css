@@ -1,0 +1,62 @@
+.pagelink {
+  display: flex;
+  flex-direction: row;
+  margin: 0 30px 0 0;
+  transition: opacity 1s ease-out;
+  text-decoration: none;
+}
+
+.pagelink__image {
+  width: 26px;
+  height: 26px;
+  margin: auto;
+}
+
+.pagelink__text {
+  margin: auto;
+  color: white;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 13px;
+  line-height: 26px;
+}
+
+.pagelink_type_login {
+  width: 76px;
+  height: 32px;
+  margin: 0;
+  color: rgba(0, 0, 0, 1);
+  border-radius: 3px;
+  background-color: rgba(61, 220, 132, 1);
+}
+
+.pagelink_type_login .pagelink__text {
+  color:rgba(0, 0, 0, 1);
+}
+
+.pagelink_type_account {
+  margin: 0 0 0 auto;
+}
+
+.pagelink_active {
+  font-weight: 500;
+}
+
+.pagelink:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+@media all and (max-width: 800px) {
+  .pagelink {
+    margin: 0 0 28px 0;
+  }
+
+  .pagelink_type_account {
+    margin: auto 0 0 0;
+  }
+
+  .pagelink_active {
+    border-bottom: 2px solid rgb(255, 255, 255, 1);
+    font-weight: 500;
+  }
+}

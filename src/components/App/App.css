@@ -1,0 +1,13 @@
+@import url('../../vendor/normalize.css');
+
+@font-face {
+  src: url('../../vendor/fonts/Inter-Regular.woff');
+  src: url('../../vendor/fonts/Inter-Regular.woff2');
+  font-family: 'Inter';
+  font-weight: normal;
+} 
+
+.app {
+  background-color: rgba(32, 32, 32, 1);
+  color: white;
+}

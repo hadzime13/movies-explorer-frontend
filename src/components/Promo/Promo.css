@@ -1,0 +1,119 @@
+.promo__container {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0 5.47% 0;
+  max-height: 574px;
+  background-color: rgba(7, 48, 66, 1);
+}
+
+.promo__title {
+  margin: 75px 0 36px 0;
+  padding: 0;
+  max-width: 56.14%;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 50px;
+  font-family: 'Inter', 'Arial', sans-serif;
+  line-height: 58px;
+}
+
+.promo__description {
+  margin: 0 0 146px 0;
+  max-width: 27.2%;
+  font-size: 13px;
+  font-family: 'Inter', 'Arial', sans-serif;
+  line-height: 16px;
+  opacity: 0.5;
+}
+
+.promo__link {
+  margin: 0 0 70px 0;
+  padding: 10px 20px;
+  width: 89px;
+  height: 16px;
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 3px;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  text-decoration: none;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 12px;
+  font-family: 'Inter', 'Arial', sans-serif;
+  line-height: 16px;
+  transition: opacity 1s ease-out;
+}
+
+.promo__link:hover {
+  opacity: 0.7;
+}
+
+.promo__image {
+  align-self: flex-end;
+  margin: 75px 0;
+}
+
+@media all and (max-width: 1040px) {
+  .promo__container {
+    align-items: center;
+    justify-content: center;
+    max-height: none;
+  }
+
+  .promo__image {
+    align-self: center;
+    order: -1;
+    margin: 140px 0 48px 0;
+  }
+
+  .promo__title {
+    margin: 0 0 22px 0;
+    max-width: 100%;
+    text-align: center;
+    font-size: 40px;
+    line-height: 50px;
+  }
+
+  .promo__description {
+    margin: 0 0 92px 0;
+    max-width: 38%;
+    text-align: center;
+    font-size: 13px;
+    font-family: 'Inter', 'Arial', sans-serif;
+  }
+
+  .promo__link {
+    margin: 0 0 70px 0;
+  }
+}
+
+@media all and (max-width: 670px) {
+  .promo__container {
+    padding: 0 4.4% 0;
+  }
+
+  .promo__title {
+    margin: 0 0 24px 0;
+    font-size: 30px;
+    line-height: 38px;
+  }
+
+  .promo__description {
+    margin: 0 0 80px 0;
+    max-width: 100%;
+  }
+
+  .promo__image {
+    margin: 70px 0 44px 0;
+    width: 66%;
+    height: auto;
+  }
+
+  .promo__link {
+    margin: 0 0 30px 0;
+  }
+}

@@ -1,0 +1,87 @@
+.button {
+  padding: 0;
+  transition: 0.4s ease-out;
+  color: rgba(255, 255, 255, 1);
+  border: none;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.button_type_404 {
+  color: rgba(66, 133, 244, 1);
+  border: none;
+  background-color: rgba(32, 32, 32, 1);
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 17px;
+}
+
+.button_type_search {
+  width: 100px;
+  height: 52px;
+  margin: 10px 10px 10px 0;
+  color: rgba(255, 255, 255, 1);
+  border-radius: 5px;
+  background-color: rgba(66, 133, 244, 1);
+}
+
+.button_type_movies {
+  width: 100%;
+  margin: 78px 0 0 0;
+  padding: 11px 0 9px;
+  color: rgba(255, 255, 255, 1);
+  border-radius: 6px;
+  background-color: rgba(47, 47, 47, 1);
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 15px;
+}
+
+.button_type_edit {
+  margin: 210px 0 16px 0;
+  background-color: rgba(32, 32, 32, 1);
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.button_type_logout {
+  margin: 0 0 259px 0;
+  color: rgba(238, 52, 101, 1);
+  background-color: rgba(32, 32, 32, 1);
+  font-size: 13px;
+  line-height: 16px;
+}
+
+@media all and (max-width: 1040px) {
+  .button_type_movies {
+    margin: 50px 0 0 0;
+  }
+}
+
+@media all and (max-width: 670px) {
+  .button_type_search {
+    width: 80px;
+    height: 44px;
+    margin: 6px 6px 6px 0;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .button_type_edit {
+    margin: 363px 0 16px 0;
+  }
+
+  .button_type_logout {
+    margin: 0 0 40px 0;
+  }
+}

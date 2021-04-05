@@ -1,0 +1,119 @@
+.navigation__menu {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0 0 0 44px;
+}
+
+.navigation__menu_not-logged-in {
+  justify-content: flex-end;
+}
+
+.navigation__link {
+  margin: 0 0 28px 0;
+  text-decoration: none;
+  color: white;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 13px;
+  line-height: 26px;
+}
+
+.navigation__button {
+  margin: auto 0;
+  display: none;
+  background-color: inherit;
+  width: 23px;
+  height: 28px;
+  border: none;
+}
+
+.navigation__button:focus {
+  outline-style: none;
+}
+
+.navigation__span,
+.navigation__span::before,
+.navigation__span::after {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 1);
+  margin: 0 auto;
+}
+
+.navigation__span::before,
+.navigation__span::after {
+  content: '';
+}
+
+.navigation__span::after {
+  left: 0px;
+  bottom: 7px;
+}
+
+.navigation__span::before {
+  left: 0px;
+  top: 7px;
+}
+
+.navigation__button_open-menu span {
+  background-color: inherit;
+  transition: 0.5s;
+}
+
+.navigation__button_open-menu span::before {
+  transform: rotate(-45deg);
+  top: 0px;
+  transition: 0.4s;
+}
+
+.navigation__button_open-menu span::after {
+  transform: rotate(45deg);
+  bottom: 0px;
+  transition: 0.4s;
+}
+
+@media all and (max-width: 800px) {
+  .navigation__menu {
+    visibility: hidden;
+    opacity: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 159px 0 90px 0;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 68%;
+    background-color: rgba(32, 32, 32, 1);
+    z-index: 1;
+    transition: all 0.3s ease;
+  }
+
+  .navigation__menu_burger {
+    display: flex;
+    margin: 0;
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.3s ease-out;
+  }
+
+  .navigation__button {
+    position: relative;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+  }
+
+  .navigation__button_open-menu {
+    background-color: rgba(32, 32, 32, 1);
+  }
+}
+
+@media all and (max-width: 400px) {
+  .navigation__menu {
+    width: 100%;
+  }
+}

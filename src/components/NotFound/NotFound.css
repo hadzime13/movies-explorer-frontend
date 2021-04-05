@@ -1,0 +1,43 @@
+.not-found__container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.not-found__title {
+  margin: 246px 0 0 0;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 140px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 169px;
+}
+
+.not-found__text {
+  margin: 0 0 184px 0;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 19px;
+}
+
+@media all and (max-width: 800px) {
+  .not-found__title {
+    margin: 408px 0 0 0;
+  }
+}
+
+@media all and (max-width: 400px) {
+  .not-found__title {
+    margin: 329px 0 0 0;
+    font-size: 80px;
+    line-height: 97px;
+  }
+
+  .not-found__text {
+    margin: 0 0 284px 0;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

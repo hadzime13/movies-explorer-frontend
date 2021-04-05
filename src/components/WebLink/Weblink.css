@@ -1,0 +1,20 @@
+.weblink {
+  transition: all 0.4s ease-out;
+  text-decoration: none;
+
+  color: rgba(255, 255, 255, 1);
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 17px;
+}
+
+.weblink:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.weblink__type_footer {
+  font-size: 13px;
+}
