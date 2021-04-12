@@ -49,5 +49,21 @@ const moviesList = [
 ]
 
 
+const notFoundMessage = 'Ничего не найдено';
+const serverErrorMessage = `Во время запроса произошла ошибка. 
+Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз`;
 
-export { moviesList, moviesImages, moviesImagesShort };
+const API_URL = 'https://api.nomoreparties.co/beatfilm-movies';
+const MAIN_API_URL = 'https://hadzime.xyz';
+const imageURL = 'https://api.nomoreparties.co';
+
+export {
+  notFoundMessage,
+  serverErrorMessage,
+  API_URL,
+  moviesImages,
+  moviesList,
+  moviesImagesShort,
+  imageURL,
+  MAIN_API_URL
+};

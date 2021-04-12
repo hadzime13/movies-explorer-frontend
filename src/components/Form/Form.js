@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './Form.css';
 
 
-const Form = ({ title, buttonText, onSubmit, children, formText, link, redirectText, mod }) => {
+const Form = ({ title, buttonText, onSubmit, children, formText, link, redirectText, mod, disabled }) => {
   return (
     <form
       action="#"
@@ -14,7 +14,7 @@ const Form = ({ title, buttonText, onSubmit, children, formText, link, redirectT
       <h2 className="form__title">{title}</h2>
       <fieldset className="form__fieldset">
         {children}
-        <button type="submit" className={`form__button${mod ? ` ${mod}` : ''}`}>
+        <button type="submit" className={`form__button${mod ? ` ${mod}` : ''}`} disabled={disabled}>
           {buttonText}
         </button>
         <p className="form__text">

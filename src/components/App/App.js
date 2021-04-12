@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Main from '../Main/Main';
@@ -11,6 +11,16 @@ import NotFound from '../NotFound/NotFound';
 
 
 function App() {
+
+  // *** Переменные состояния
+
+  // Регистрация
+
+  const [isRegistered, setRegisterState] = useState({
+    state: false,
+    message: '',
+  });
+
   return (
     <div className="app">
       <Switch >

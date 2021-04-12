@@ -9,7 +9,8 @@
 
 .movies-cardlist__list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, calc((100% - 60px) / 3));
+  grid-template-rows: 1fr;
   padding: 0;
   list-style: none;
   grid-auto-rows: 1fr;
@@ -27,7 +28,7 @@
   }
 
   .movies-cardlist__list {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, calc((100% - 60px) / 2));
     row-gap: 47px;
   }
 }

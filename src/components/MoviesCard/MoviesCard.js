@@ -1,9 +1,11 @@
 import React from 'react';
 import './MoviesCard.css';
 import SavedImg from '../../images/save3.svg';
-import DeleteImg from '../../images/delete.svg';
 
 const MoviesCard = ({ movieImage, movieName, movieLength, isSaved, isAtSavedMovies }) => {
+  
+
+  
   return (
     <li className="movies-card__element">
       <img src={movieImage} alt={movieName} className="movies-card__image" />

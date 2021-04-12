@@ -1,7 +1,13 @@
 import React from 'react';
 import Form from '../Form/Form';
+import useFormWithValidation from '../../utils/useFormWithValidation';
+import { registerFormInputs } from '../../utils/constants';
 
 const Register = () => {
+
+  const { data, errors, handleChange, isValid, resetForm } = useFormWithValidation(registerFormInputs);
+
+
   return (
     <Form
       title='Добро пожаловать!'
@@ -9,6 +15,7 @@ const Register = () => {
       formText='Уже зарегистрированы?'
       redirectText='Войти'
       link='/signin'
+      disabled={!isValid}
     >
       <>
         <label htmlFor="name" className="form__label">Имя</label>
@@ -18,12 +25,13 @@ const Register = () => {
           name="name"
           type="text"
           placeholder="Имя"
-          // value={data.value}
-          // onChange={handleChange}
+          value={data.name}
+          onChange={handleChange}
           minLength="2"
           maxLength="30"
           required
         />
+        <span className="form__error">{`${errors.name}`}</span>
         <label htmlFor="email" className="form__label">E-mail</label>
         <input
           className="form__input"
@@ -31,12 +39,13 @@ const Register = () => {
           name="email"
           type="email"
           placeholder="Email"
-          // value={data.value}
-          // onChange={handleChange}
+          value={data.email}
+          onChange={handleChange}
           minLength="2"
           maxLength="30"
           required
         />
+        <span className="form__error">{`${errors.email}`}</span>
         <label htmlFor="password" className="form__label">Пароль</label>
         <input
           className="form__input form__input_type_password"
@@ -44,13 +53,13 @@ const Register = () => {
           name="password"
           type="password"
           placeholder="Пароль"
-          // value={data.password}
-          // onChange={handleChange}
-          minLength="2"
+          value={data.password}
+          onChange={handleChange}
+          minLength="5"
           maxLength="30"
           required
         />
-        <span className="form__error">Что-то пошло не так</span>
+        <span className="form__error">{`${errors.password}`}</span>
       </>
     </Form>
   )
