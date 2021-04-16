@@ -2,12 +2,12 @@ import React from 'react';
 import Header from '../Header/Header';
 import Login from '../Login/Login';
 
-const LoginPage = () => {
+const LoginPage = ({ handleLogin, loginError }) => {
 
   return (
     <>
       <Header mod="header__container_type_register" isMenuOn={false} />
-      <Login />
+      <Login handleLogin={handleLogin} loginError={loginError} />
     </>
   )
 }

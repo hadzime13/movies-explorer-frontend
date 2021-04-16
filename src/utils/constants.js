@@ -4,8 +4,17 @@ const registerFormInputs = {
   password: '',
 }
 
+const loginFormInputs = {
+  email: '',
+  password: '',
+}
+
+const profileFormInputs = {
+  name: '',
+  email: '',
+}
 const searchInputs = {
   film: '',
 }
 
-export { registerFormInputs, searchInputs }
+export { registerFormInputs, searchInputs, loginFormInputs, profileFormInputs }

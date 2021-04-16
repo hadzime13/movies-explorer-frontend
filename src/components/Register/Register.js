@@ -3,10 +3,17 @@ import Form from '../Form/Form';
 import useFormWithValidation from '../../utils/useFormWithValidation';
 import { registerFormInputs } from '../../utils/constants';
 
-const Register = () => {
+const Register = ({ handleRegister, registerError }) => {
 
   const { data, errors, handleChange, isValid, resetForm } = useFormWithValidation(registerFormInputs);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, email, password } = data;
+    console.log(name, email, password);
+    handleRegister(name, email, password);
+    resetForm();
+  };
 
   return (
     <Form
@@ -16,6 +23,7 @@ const Register = () => {
       redirectText='Войти'
       link='/signin'
       disabled={!isValid}
+      onSubmit={handleSubmit}
     >
       <>
         <label htmlFor="name" className="form__label">Имя</label>
@@ -31,7 +39,7 @@ const Register = () => {
           maxLength="30"
           required
         />
-        <span className="form__error">{`${errors.name}`}</span>
+        <span className={`form__error${errors.name ? ' form__error_active' : ''}`}>{`${errors.name}`}</span>
         <label htmlFor="email" className="form__label">E-mail</label>
         <input
           className="form__input"
@@ -45,7 +53,7 @@ const Register = () => {
           maxLength="30"
           required
         />
-        <span className="form__error">{`${errors.email}`}</span>
+        <span className={`form__error${errors.email ? ' form__error_active' : ''}`}>{`${errors.email}`}</span>
         <label htmlFor="password" className="form__label">Пароль</label>
         <input
           className="form__input form__input_type_password"
@@ -59,7 +67,9 @@ const Register = () => {
           maxLength="30"
           required
         />
-        <span className="form__error">{`${errors.password}`}</span>
+        <span className={`form__error${errors.name || registerError ? ' form__error_active' : ''}`}>
+          {`${data.password ? errors.password : registerError}`}
+        </span>
       </>
     </Form>
   )

@@ -5,10 +5,10 @@ const handleResponse = (res) => {
   return res.json();
 }
 
-// Обработка ошибки
-const handleResponseError = (err) => {
-  console.log(err);
-}
+// // Обработка ошибки
+// const handleResponseError = (err) => {
+//   console.log(err);
+// }
 
 
 const getMoviesList = () => {
@@ -18,4 +18,4 @@ const getMoviesList = () => {
     .then(handleResponse);
 }
 
-export { handleResponseError, getMoviesList }
+export { getMoviesList }

@@ -68,6 +68,11 @@
   font-weight: normal;
   font-style: normal;
   line-height: 12px;
+  display: none;
+}
+
+.form__error_active {
+  display: block;
 }
 
 .form__button {

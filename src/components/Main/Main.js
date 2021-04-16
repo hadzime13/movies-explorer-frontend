@@ -9,11 +9,11 @@ import Footer from '../Footer/Footer';
 
 
 
-const Main = React.memo(() => {
+const Main = React.memo(({ loggedIn }) => {
   return (
     <>
       <Header
-        mod='header__container_type_main' isLoggedIn={false} />
+        mod='header__container_type_main' loggedIn={loggedIn} />
       <Promo />
       <AboutProject />
       <Techs />

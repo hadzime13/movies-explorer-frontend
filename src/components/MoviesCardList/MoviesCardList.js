@@ -5,7 +5,7 @@ import './MoviesCardList.css';
 import NoImage from '../../images/iconmonstr-picture-thin.svg'
 import { moviesList, moviesImages, imageURL } from '../../config/index';
 
-const MoviesCardList = ({ movies, isSaved, mod, onButtonClick, isButtonOn }) => {
+const MoviesCardList = ({ movies, savedMovies, isSaved, mod, onButtonClick, isButtonOn, handleSaveMovie, handleDeleteMovie, getMovies }) => {
 
   return (
     <>
@@ -31,10 +31,16 @@ const MoviesCardList = ({ movies, isSaved, mod, onButtonClick, isButtonOn }) => 
             <ul className="movies-cardlist__list">
               {movies.map((movie) =>
               (<MoviesCard
+                movie={movie}
                 key={movie.id}
                 movieImage={movie.image ? `${imageURL}${movie.image.url}` : NoImage}
                 movieName={movie.nameRU}
-                movieLength={`${Math.floor(movie.duration / 60)}ч${movie.duration % 60}м`} />))}
+                movieLength={`${Math.floor(movie.duration / 60)}ч${movie.duration % 60}м`}
+                handleSaveMovie={handleSaveMovie}
+                handleDeleteMovie={handleDeleteMovie}
+                isSaved={savedMovies.find((element) => element.movieId === movie.id)}
+                getMovies={getMovies} />)
+              )}
             </ul>
             {isButtonOn && (<Button buttonText='Еще' buttonMod='button_type_movies' onClick={onButtonClick} />)}
           </>
