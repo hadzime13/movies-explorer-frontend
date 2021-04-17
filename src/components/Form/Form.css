@@ -60,7 +60,6 @@
 
 .form__error {
   align-self: flex-start;
-
   margin: 10px 0 0 0;
   color: rgba(238, 52, 101, 1);
   font-family: 'Inter', 'Arial', sans-serif;

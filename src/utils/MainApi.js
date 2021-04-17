@@ -14,7 +14,12 @@ class MainApi {
   }
 
   // Метод обработки ответа
-  _handleResponse = (response) => response.json();
+  _handleResponse = (res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(res);
+  }
 
   // Регистрация 
   register = (name, email, password) => {
@@ -95,7 +100,7 @@ class MainApi {
     )
       .then(this._handleResponse)
   };
-  
+
   // Получение сохраненных пользователем фильмов
 
   getAllMovies = () => {

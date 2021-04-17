@@ -38,6 +38,7 @@ const Register = ({ handleRegister, registerError }) => {
           minLength="2"
           maxLength="30"
           required
+          pattern="[a-zA-Z0-9\sа-яА-Я\-]{2,30}"
         />
         <span className={`form__error${errors.name ? ' form__error_active' : ''}`}>{`${errors.name}`}</span>
         <label htmlFor="email" className="form__label">E-mail</label>
@@ -47,6 +48,7 @@ const Register = ({ handleRegister, registerError }) => {
           name="email"
           type="email"
           placeholder="Email"
+          pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
           value={data.email}
           onChange={handleChange}
           minLength="2"
@@ -63,11 +65,11 @@ const Register = ({ handleRegister, registerError }) => {
           placeholder="Пароль"
           value={data.password}
           onChange={handleChange}
-          minLength="5"
+          minLength="6"
           maxLength="30"
           required
         />
-        <span className={`form__error${errors.name || registerError ? ' form__error_active' : ''}`}>
+        <span className={`form__error${errors.password || registerError ? ' form__error_active' : ''}`}>
           {`${data.password ? errors.password : registerError}`}
         </span>
       </>

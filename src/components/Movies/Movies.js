@@ -8,19 +8,24 @@ import Message from '../Message/Message';
 
 const Movies = ({
   handleSaveMovie, handleDeleteMovie, searchMovies,
-  isPreloaderOn, errorText, filteredMovies, loadCards, isButtonOn, getMovies, savedMovies }) => {
+  isPreloaderOn, errorText, filteredMovies,
+  loadCards, isButtonOn, getMovies, savedMovies,
+  shortMoviesSwitch, isShortMovies, shortMoviesOff }) => {
 
   // При загрузке страницы
   React.useEffect(() => {
 
     getMovies();
+    return () => {
+      shortMoviesOff();
+    }
   }, [])
 
 
   return (
     <>
       <Header isLoggedIn={true} />
-      <SearchForm searchMovies={searchMovies} />
+      <SearchForm searchMovies={searchMovies} shortMoviesSwitch={shortMoviesSwitch} isShortMovies={isShortMovies} />
       {isPreloaderOn && <Preloader />}
       {errorText && <Message messageText={errorText} />}
       {!isPreloaderOn && !errorText

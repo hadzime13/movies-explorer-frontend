@@ -5,27 +5,26 @@ import './MoviesCardList.css';
 import NoImage from '../../images/iconmonstr-picture-thin.svg'
 import { moviesList, moviesImages, imageURL } from '../../config/index';
 
-const MoviesCardList = ({ movies, savedMovies, isSaved, mod, onButtonClick, isButtonOn, handleSaveMovie, handleDeleteMovie, getMovies }) => {
+const MoviesCardList = ({ movies, savedMovies, savedMoviesPage, mod, onButtonClick, isButtonOn, handleSaveMovie, handleDeleteMovie, getMovies }) => {
 
   return (
     <>
       <section className={`movies-cardlist__container${mod ? ` ${mod}` : ''}`}>
-        {isSaved ?
+        {savedMoviesPage ?
           <ul className="movies-cardlist__list">
-            <MoviesCard
-              movieImage={moviesImages[0]}
-              movieName={moviesList[0]}
-              movieLength='1ч17м'
-              isAtSavedMovies={true} />
-            <MoviesCard movieImage={moviesImages[1]}
-              movieName={moviesList[1]}
-              movieLength='1ч17м'
-              isAtSavedMovies={true} />
-            <MoviesCard
-              movieImage={moviesImages[2]}
-              movieName={moviesList[2]}
-              movieLength='1ч17м'
-              isAtSavedMovies={true} />
+            {savedMovies.map((movie) =>
+            (<MoviesCard
+              movie={movie}
+              key={movie.movieId}
+              movieImage={movie.image ? movie.image : NoImage}
+              movieName={movie.nameRU}
+              movieLength={`${Math.floor(movie.duration / 60)}ч${movie.duration % 60}м`}
+              movieTrailer={movie.trailer || 'https://www.youtube.com/'}
+              isAtSavedMovies={true}
+              handleDeleteMovie={handleDeleteMovie}
+              getMovies={getMovies}
+            />)
+            )}
           </ul>
           : <>
             <ul className="movies-cardlist__list">
@@ -36,6 +35,7 @@ const MoviesCardList = ({ movies, savedMovies, isSaved, mod, onButtonClick, isBu
                 movieImage={movie.image ? `${imageURL}${movie.image.url}` : NoImage}
                 movieName={movie.nameRU}
                 movieLength={`${Math.floor(movie.duration / 60)}ч${movie.duration % 60}м`}
+                movieTrailer={movie.trailerLink || 'https://www.youtube.com/'}
                 handleSaveMovie={handleSaveMovie}
                 handleDeleteMovie={handleDeleteMovie}
                 isSaved={savedMovies.find((element) => element.movieId === movie.id)}

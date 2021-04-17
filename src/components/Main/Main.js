@@ -6,10 +6,12 @@ import Techs from '../Techs/Techs';
 import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 
 
 const Main = React.memo(({ loggedIn }) => {
+  const currentUser = React.useContext(CurrentUserContext);
   return (
     <>
       <Header

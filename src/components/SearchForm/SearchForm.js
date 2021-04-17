@@ -1,16 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useForm from '../../utils/useForm';
 import Button from '../Button/Button';
 import { searchInputs } from '../../utils/constants'
 import './SearchForm.css';
 
-const SearchForm = ({ searchMovies }) => {
-  // ***Переменные состояния
-  // Короткометражки
-  const [isShortMovies, setShortMovies] = useState(false);
-  const onClick = () => {
-    isShortMovies ? setShortMovies(false) : setShortMovies(true);
-  }
+const SearchForm = ({ searchMovies, shortMoviesSwitch, isShortMovies, filterSavedMovies, userMovies }) => {
 
   const { handleChange, data } = useForm(searchInputs);
 
@@ -18,7 +12,7 @@ const SearchForm = ({ searchMovies }) => {
   // Сабмит формы
   const onButtonClick = (evt) => {
     evt.preventDefault();
-    searchMovies(data.film.toLowerCase());
+    searchMovies ? searchMovies(data.film.toLowerCase()) : filterSavedMovies(userMovies, data.film.toLowerCase());
   }
 
   return (
@@ -40,7 +34,9 @@ const SearchForm = ({ searchMovies }) => {
           disabled={data.film.length < 1}
           onClick={onButtonClick} />
       </fieldset>
-      <button type="button" className={`search-form__switch${isShortMovies ? ' search-form__switch_on' : ''}`} onClick={onClick}>
+      <button type="button"
+        className={`search-form__switch${isShortMovies ? ' search-form__switch_on' : ''}`}
+        onClick={shortMoviesSwitch}>
         <span className="search-form__switch-text">Короткометражки</span>
       </button>
     </form>

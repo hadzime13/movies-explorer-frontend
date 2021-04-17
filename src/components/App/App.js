@@ -47,10 +47,22 @@ function App() {
   const [preloaderOn, setPreloaderOn] = useState(false);
   // Стейт для хранения отображаемых фильмов
   const [filteredMovies, setFilterMovies] = useState([]);
+  // Стейт для хранения короткометражек 
+  const [foundShortMovies, setFoundShortMovies] = useState([]);
+  // Стейт переключателя короткометражек
+  const [isShortMovies, setIsShortMovies] = useState(false);
+
   // Стейт для хранения найденных фильмов
   const [foundMovies, setFoundMovies] = useState([]);
   // Стейт для сохраненных пользователем фильмов
   const [savedMovies, setSavedMovies] = useState([]);
+
+  // Стейт для сохраненных короткометражек
+  const [savedShortMovies, setSavedShortMovies] = useState([]);
+
+  // Стейт для отображаемых сохраненных фильмов 
+  const [savedFilteredMovies, setSavedFilteredMovies] = useState([]);
+
   // Cтейт для хранения числа фильмов на странице и добавляемых по кнопке еще
   const [numberOfMovies, setNumberOfMovies] = useState(0);
   // Стейт состояния кнопки
@@ -132,7 +144,6 @@ function App() {
           setLoggedIn(true);
           mainApi.getUser()
             .then((res) => {
-              console.log(res);
               setUserData({
                 id: res._id,
                 name: res.name,
@@ -161,6 +172,7 @@ function App() {
       email: '',
     });
     setLoggedIn(false);
+    history.push('/');
   };
 
   // // Функция проверки наличия и валидности токена
@@ -170,7 +182,6 @@ function App() {
       mainApi
         .getContent(jwt)
         .then((res) => {
-          console.log(res);
           if (res.message) {
             setLoggedIn(false);
             setUserData({
@@ -195,7 +206,7 @@ function App() {
           return Promise.reject(`Ошибка: ${res.message}`);
         })
         .finally(() => {
-          console.log('checked!');
+          console.log('jwt checked!');
           setPermissionsChecked(true);
         });
     }
@@ -242,11 +253,9 @@ function App() {
             name: res.name,
             email: res.email,
           });
-          console.log(res);
         }
       })
       .catch((res) => {
-        console.log(res);
         setErrorMessages({
           ...errorMessages,
           editProfileError: `Что-то пошло не так :(' ${res}`,
@@ -257,18 +266,19 @@ function App() {
   // Функция сохранения фильма
   const handleSaveMovie = (movie) => {
     const savedMovie = {
-      country: movie.country,
-      director: movie.director,
+      country: movie.country || 'none',
+      director: movie.director || 'none',
       duration: movie.duration,
       year: movie.year,
-      description: movie.description,
+      description: movie.description || 'none',
       nameRU: movie.nameRU,
       nameEN: movie.nameEN,
-      image: `${imageURL}${movie.image.url}`,
-      trailer: movie.trailerLink,
-      thumbnail: `${imageURL}${movie.image.formats.thumbnail.url}`,
+      image: `${imageURL}${movie.image.url}` || 'https://www.youtube.com/',
+      trailer: movie.trailerLink || 'https://www.youtube.com',
+      thumbnail: `${imageURL}${movie.image.formats.thumbnail.url}` || 'https://www.youtube.com/',
       movieId: movie.id,
     }
+    console.log(savedMovie);
     mainApi
       .addMovie(savedMovie)
       .then((res) => {
@@ -300,7 +310,6 @@ function App() {
         }
       })
       .catch((res) => {
-        console.log(res);
         setErrorMessages({
           ...errorMessages,
           saveMovieError: `Что-то пошло не так :(' ${res}`,
@@ -332,6 +341,9 @@ function App() {
       const nameEn = movie.nameEN || '';
       return (nameRu.toLowerCase().includes(searchText) || nameEn.toLowerCase().includes(searchText));
     });
+    const foundShortMovies = foundMovies.filter((movie) => {
+      return movie.duration <= 40;
+    });
     if (foundMovies.length === 0) {
       setErrorMessages({
         ...errorMessages,
@@ -341,10 +353,36 @@ function App() {
     setPreloaderOn(false);
     checkButton(foundMovies, numberOfMovies);
     setFoundMovies(foundMovies);
+    setFoundShortMovies(foundShortMovies);
     setFilterMovies(foundMovies.slice(0, numberOfMovies));
     localStorage.setItem('moviesList', JSON.stringify(foundMovies))
   }
 
+  // Поиск фильмов в сохраненных фильмах
+
+  const filterSavedMovies = (movies, searchText) => {
+    setErrorMessages({
+      ...errorMessages,
+      searchError: '',
+    });
+    const foundMovies = movies.filter((movie) => {
+      const nameRu = movie.nameRU || '';
+      const nameEn = movie.nameEN || '';
+      return (nameRu.toLowerCase().includes(searchText) || nameEn.toLowerCase().includes(searchText));
+    });
+    const foundShortMovies = foundMovies.filter((movie) => {
+      return movie.duration <= 40;
+    });
+    if (foundMovies.length === 0) {
+      setErrorMessages({
+        ...errorMessages,
+        searchError: notFoundMessage,
+      });
+    }
+    setSavedMovies(foundMovies);
+    setSavedFilteredMovies(foundMovies);
+    setSavedShortMovies(foundShortMovies);
+  }
   // Функция поиска фильмов
   const searchMovies = (searchText) => {
 
@@ -369,7 +407,6 @@ function App() {
             searchError: serverErrorMessage,
           });
           setPreloaderOn(false);
-          console.log(err);
         })
     }
 
@@ -379,11 +416,15 @@ function App() {
   const renderCardsOnFirstLoad = (number) => {
     if (localStorage.getItem('moviesList')) {
       const movies = (JSON.parse(localStorage.getItem('moviesList')));
-      console.log(movies.length);
-      console.log(movies.slice(0, number).length);
+      // console.log(movies.length);
+      // console.log(movies.slice(0, number).length);
       checkButton(movies, number);
+      const foundShortMovies = movies.filter((movie) => {
+        return movie.duration <= 40;
+      });
+      setFoundShortMovies(foundShortMovies);
       setFoundMovies(movies);
-      console.log(`render ${number} cards`);
+      // console.log(`render ${number} cards`);
       setFilterMovies(movies.slice(0, number));
     }
   }
@@ -393,19 +434,19 @@ function App() {
     const addCards = (number) => {
       const showMovies = numberOfMovies + number;
       setNumberOfMovies(showMovies)
-      console.log(showMovies);
+      // console.log(showMovies);
       checkButton(foundMovies, showMovies);
       setFilterMovies(foundMovies.slice(0, showMovies));
     }
 
     if (width === 'display' || width === 'largeDisplay') {
       const addMovies = 3;
-      console.log(addMovies);
+      // console.log(addMovies);
       addCards(addMovies);
     }
     else {
       const addMovies = 2;
-      console.log(addMovies);
+      // console.log(addMovies);
       addCards(addMovies);
     }
   }
@@ -417,7 +458,12 @@ function App() {
     mainApi
       .getAllMovies()
       .then((res) => {
+        const savedShortMovies = res.filter((movie) => {
+          return movie.duration <= 40;
+        });
         setSavedMovies(res);
+        setSavedFilteredMovies(res);
+        setSavedShortMovies(savedShortMovies);
       })
       .catch((err) => console.log(err))
   }
@@ -430,6 +476,46 @@ function App() {
     else if (!isButtonOn) {
       setButtonState(true);
     }
+  }
+
+  // Функция кнопки короткометражек в фильмах
+
+  const shortMoviesSwitch = () => {
+    if (!isShortMovies) {
+      setIsShortMovies(true);
+      checkButton(foundShortMovies, numberOfMovies);
+      setFilterMovies(foundShortMovies.slice(0, numberOfMovies));
+    }
+    else {
+      setIsShortMovies(false);
+      checkButton(foundMovies, numberOfMovies);
+      setFilterMovies(foundMovies.slice(0, numberOfMovies));
+    }
+  }
+  // Функция кнопки короткометражек в сохраненных фильмах
+
+  const shortSavedMoviesSwitch = () => {
+    if (!isShortMovies) {
+      setIsShortMovies(true);
+      setSavedFilteredMovies(savedShortMovies);
+    }
+    else {
+      setIsShortMovies(false);
+      setSavedFilteredMovies(savedMovies);
+    }
+  }
+
+  // Очистка стейта короткометражек при переходе на другую страницу
+
+  const shortMoviesOff = () => {
+    setIsShortMovies(false);
+    setFilterMovies(foundMovies.slice(0, numberOfMovies));
+  }
+
+  // Функция перехода на предыдущую страницу
+
+  const goBack = () => {
+    history.goBack();
   }
 
   // Проверка токена при загрузке страницы
@@ -472,7 +558,7 @@ function App() {
             <Main loggedIn={loggedIn} />
           </Route>
           <ProtectedRoute
-            path="/movies"
+            exact path="/movies"
             loggedIn={loggedIn}
             component={Movies}
             handleSaveMovie={handleSaveMovie}
@@ -484,10 +570,25 @@ function App() {
             loadCards={loadCards}
             isButtonOn={isButtonOn}
             getMovies={getMovies}
-            savedMovies={savedMovies} />
-          <ProtectedRoute path="/saved-movies" loggedIn={loggedIn} component={SavedMovies} />
+            savedMovies={savedMovies}
+            shortMoviesSwitch={shortMoviesSwitch}
+            isShortMovies={isShortMovies}
+            shortMoviesOff={shortMoviesOff} />
           <ProtectedRoute
-            path="/profile"
+            exact path="/saved-movies"
+            loggedIn={loggedIn}
+            component={SavedMovies}
+            savedMovies={savedFilteredMovies}
+            userMovies={savedMovies}
+            getMovies={getMovies}
+            filterSavedMovies={filterSavedMovies}
+            shortMoviesSwitch={shortSavedMoviesSwitch}
+            isShortMovies={isShortMovies}
+            shortMoviesOff={shortMoviesOff}
+            handleDeleteMovie={handleDeleteMovie}
+            errorText={errorMessages.searchError} />
+          <ProtectedRoute
+            exact path="/profile"
             loggedIn={loggedIn}
             component={ProfilePage}
             handleEditProfile={handleEditProfile}
@@ -495,17 +596,17 @@ function App() {
             editProfile={editProfile}
             isEditProfile={isEditProfile}
             handleLogout={handleLogout} />
-          <Route path="/signup">
+          <Route exact path="/signup">
             <RegisterPage
               handleRegister={handleRegister}
               registerError={errorMessages.registerError || ''}
             />
           </Route>
-          <Route path="/signin">
+          <Route exact path="/signin">
             <LoginPage handleLogin={handleLogin} loginError={errorMessages.loginError || ''} />
           </Route>
           <Route path="*">
-            <NotFound />
+            <NotFound goBack={goBack} />
           </Route>
         </Switch>
       </div>

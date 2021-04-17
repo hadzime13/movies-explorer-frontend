@@ -73,8 +73,9 @@ const Profile = ({ handleEditProfile, isEditProfile, editProfile, editProfileErr
               minLength="2"
               maxLength="30"
               required
+              pattern="[a-zA-Z0-9\sа-яА-Я\-]{2,30}"
             />
-
+            <span className={`form__error${errors.name ? ' form__error_active' : ''}`}>{`${errors.name}`}</span>
             <label htmlFor="email" className="form__label">E-mail</label>
             <input
               className="form__input"
@@ -87,8 +88,11 @@ const Profile = ({ handleEditProfile, isEditProfile, editProfile, editProfileErr
               minLength="2"
               maxLength="30"
               required
+              pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
             />
-            <span className={`form__error${editProfileError ? ' form__error_active' : ''}`}>{editProfileError}</span>
+            <span className={`form__error${errors.email || editProfileError ? ' form__error_active' : ''}`}>
+              {`${data.email ? errors.email : editProfileError}`}
+            </span>
           </>
         </Form>
       }

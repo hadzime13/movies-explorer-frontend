@@ -39,6 +39,7 @@ const Login = ({ handleLogin, loginError }) => {
           minLength="2"
           maxLength="30"
           required
+          pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
         />
         <span className={`form__error${errors.email ? ' form__error_active' : ''}`}>{`${errors.email}`}</span>
         <label htmlFor="password" className="form__label">Пароль</label>
@@ -54,7 +55,7 @@ const Login = ({ handleLogin, loginError }) => {
           maxLength="30"
           required
         />
-        <span className={`form__error${errors.name || loginError ? ' form__error_active' : ''}`}>
+        <span className={`form__error${errors.password || loginError ? ' form__error_active' : ''}`}>
           {`${data.password ? errors.password : loginError}`}
         </span>
       </>
