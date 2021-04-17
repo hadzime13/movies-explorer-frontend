@@ -60,7 +60,6 @@
 
 .form__error {
   align-self: flex-start;
-
   margin: 10px 0 0 0;
   color: rgba(238, 52, 101, 1);
   font-family: 'Inter', 'Arial', sans-serif;
@@ -68,12 +67,18 @@
   font-weight: normal;
   font-style: normal;
   line-height: 12px;
+  display: none;
+}
+
+.form__error_active {
+  display: block;
 }
 
 .form__button {
   width: 100%;
   margin: 69px 0 0 0;
   padding: 14px 0;
+  transition: 0.4s ease-out;
   color: rgba(255, 255, 255, 1);
   border: none;
   border-radius: 3px;
@@ -83,6 +88,11 @@
   font-weight: 500;
   font-style: normal;
   line-height: 17px;
+}
+
+.form__button:disabled {
+  background-color: rgb(194, 181, 181);
+  cursor: default;
 }
 
 .form__button_type_login {

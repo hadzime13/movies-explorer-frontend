@@ -2,11 +2,16 @@ import React from 'react';
 import Header from '../Header/Header';
 import Profile from '../Profile/Profile';
 
-const ProfilePage = () => {
+const ProfilePage = ({ handleEditProfile, editProfileError, isEditProfile, editProfile, handleLogout }) => {
   return (
     <>
       <Header />
-      <Profile username='Виталий' userEmail='pochta@vitaliy.ru' />
+      <Profile
+        handleEditProfile={handleEditProfile}
+        editProfileError={editProfileError}
+        isEditProfile={isEditProfile}
+        editProfile={editProfile}
+        handleLogout={handleLogout} />
     </>
   )
 

@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import PageLink from '../PageLink/PageLink';
 import './Navigation.css';
 import accountImage from '../../images/test.svg';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 const Navigation = ({ isLoggedIn = false }) => {
+  const currentUser = React.useContext(CurrentUserContext);
   const [isOpenMenu, setMenuState] = useState(false);
   const onClick = () => {
     isOpenMenu ? setMenuState(false) : setMenuState(true);

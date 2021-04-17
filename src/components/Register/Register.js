@@ -1,7 +1,20 @@
 import React from 'react';
 import Form from '../Form/Form';
+import useFormWithValidation from '../../utils/useFormWithValidation';
+import { registerFormInputs } from '../../utils/constants';
 
-const Register = () => {
+const Register = ({ handleRegister, registerError }) => {
+
+  const { data, errors, handleChange, isValid, resetForm } = useFormWithValidation(registerFormInputs);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, email, password } = data;
+    console.log(name, email, password);
+    handleRegister(name, email, password);
+    resetForm();
+  };
+
   return (
     <Form
       title='Добро пожаловать!'
@@ -9,6 +22,8 @@ const Register = () => {
       formText='Уже зарегистрированы?'
       redirectText='Войти'
       link='/signin'
+      disabled={!isValid}
+      onSubmit={handleSubmit}
     >
       <>
         <label htmlFor="name" className="form__label">Имя</label>
@@ -18,12 +33,14 @@ const Register = () => {
           name="name"
           type="text"
           placeholder="Имя"
-          // value={data.value}
-          // onChange={handleChange}
+          value={data.name}
+          onChange={handleChange}
           minLength="2"
           maxLength="30"
           required
+          pattern="[a-zA-Z0-9\sа-яА-Я\-]{2,30}"
         />
+        <span className={`form__error${errors.name ? ' form__error_active' : ''}`}>{`${errors.name}`}</span>
         <label htmlFor="email" className="form__label">E-mail</label>
         <input
           className="form__input"
@@ -31,12 +48,14 @@ const Register = () => {
           name="email"
           type="email"
           placeholder="Email"
-          // value={data.value}
-          // onChange={handleChange}
+          pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+          value={data.email}
+          onChange={handleChange}
           minLength="2"
           maxLength="30"
           required
         />
+        <span className={`form__error${errors.email ? ' form__error_active' : ''}`}>{`${errors.email}`}</span>
         <label htmlFor="password" className="form__label">Пароль</label>
         <input
           className="form__input form__input_type_password"
@@ -44,13 +63,15 @@ const Register = () => {
           name="password"
           type="password"
           placeholder="Пароль"
-          // value={data.password}
-          // onChange={handleChange}
-          minLength="2"
+          value={data.password}
+          onChange={handleChange}
+          minLength="6"
           maxLength="30"
           required
         />
-        <span className="form__error">Что-то пошло не так</span>
+        <span className={`form__error${errors.password || registerError ? ' form__error_active' : ''}`}>
+          {`${data.password ? errors.password : registerError}`}
+        </span>
       </>
     </Form>
   )
