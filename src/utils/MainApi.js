@@ -14,11 +14,8 @@ class MainApi {
   }
 
   // Метод обработки ответа
-  _handleResponse = (res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(res);
+  _handleResponse(res) { 
+    return res.json();
   }
 
   // Регистрация 

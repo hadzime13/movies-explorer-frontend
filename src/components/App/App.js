@@ -253,6 +253,7 @@ function App() {
             name: res.name,
             email: res.email,
           });
+          editProfile();
         }
       })
       .catch((res) => {

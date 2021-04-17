@@ -6,7 +6,7 @@ const inputEmailErrorMessage = 'Введите корректный email';
 const inputNameErrorMessage = 'Имя может содержать только буквы,пробел или дефис. От 2 до 30 символов';
 
 const API_URL = 'https://api.nomoreparties.co/beatfilm-movies';
-const MAIN_API_URL = 'https://hadzime.xyz';
+const MAIN_API_URL = 'https://api.hadzime.xyz';
 const imageURL = 'https://api.nomoreparties.co';
 
 export {
