@@ -1,26 +1,102 @@
 import React from 'react';
 import Button from '../Button/Button';
+import Form from '../Form/Form';
+import useFormWithValidation from '../../utils/useFormWithValidation';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
+import { profileFormInputs } from '../../utils/constants';
 import './Profile.css';
 
-const Profile = ({ username, userEmail }) => {
+const Profile = ({ handleEditProfile, isEditProfile, editProfile, editProfileError, handleLogout }) => {
+
+  const currentUser = React.useContext(CurrentUserContext);
+  const profileFormData = {
+    email: currentUser.email,
+    name: currentUser.name,
+  }
+
+  const { data, errors, handleChange, isValid, isDifferent } =
+    useFormWithValidation(profileFormInputs, profileFormData);
+
+  // Изменено ли хоть одно поле формы редактирования
+  const formDiffers = isDifferent.name === true || isDifferent.email === true;
+
+  // Сабмит формы редактирования профиля
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, email } = data;
+    console.log(name, email);
+    handleEditProfile(name, email);
+  };
 
   return (
     <section className="profile__container">
-      <h2 className="profile__title">Привет, Виталий!</h2>
-      <p className="profile__item">
-        Имя
+
+      { !isEditProfile
+        ? (<>
+          <h2 className="profile__title">{`Привет, ${currentUser.name}!`}</h2>
+          <p className="profile__item">
+            Имя
         <span className="profile__info">
-          {username}
-        </span>
-      </p>
-      <p className="profile__item">
-        E-mail
+              {currentUser.name}
+            </span>
+          </p>
+          <p className="profile__item">
+            E-mail
         <span className="profile__info">
-          {userEmail}
-        </span>
-      </p>
-      <Button buttonText='Редактировать' buttonMod='button_type_edit' />
-      <Button buttonText='Выйти из аккаунта' buttonMod='button_type_logout' />
+              {currentUser.email}
+            </span>
+          </p>
+          <Button buttonText='Редактировать' buttonMod='button_type_edit' onClick={editProfile} />
+          <Button buttonText='Выйти из аккаунта' buttonMod='button_type_logout' onClick={handleLogout} />
+        </>
+        )
+        : <Form
+          title="Редактирование профиля"
+          buttonText="Сохранить"
+          onSubmit={handleSubmit}
+          disabled={!(formDiffers && isValid)}
+          formText="Передумали?"
+          redirectText="Вернуться"
+          link='/profile'
+          onLinkClick={editProfile}
+        >
+          <>
+            <label htmlFor="name" className="form__label">Имя</label>
+            <input
+              className="form__input"
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Имя"
+              value={data.name}
+              onChange={handleChange}
+              minLength="2"
+              maxLength="30"
+              required
+              pattern="[a-zA-Z0-9\sа-яА-Я\-]{2,30}"
+            />
+            <span className={`form__error${errors.name ? ' form__error_active' : ''}`}>{`${errors.name}`}</span>
+            <label htmlFor="email" className="form__label">E-mail</label>
+            <input
+              className="form__input"
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Email"
+              value={data.email}
+              onChange={handleChange}
+              minLength="2"
+              maxLength="30"
+              required
+              pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+            />
+            <span className={`form__error${errors.email || editProfileError ? ' form__error_active' : ''}`}>
+              {`${data.email ? errors.email : editProfileError}`}
+            </span>
+          </>
+        </Form>
+      }
+
     </section>
   )
 }
