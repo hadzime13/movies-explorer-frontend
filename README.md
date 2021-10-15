@@ -33,3 +33,9 @@
 ![Демо3](http://g.recordit.co/z722OfzzHn.gif "Демо3")
 
 ---
+
+## Запуск проекта
+
+``npm run start`` - режим разработки  
+``nppm run build`` - сборка проекта
+
